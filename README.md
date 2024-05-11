@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+![Workflow Status](https://github.com/ziebamikolaj/dynamically-generated-portfolio/actions/workflows/conventional_commits.yml/badge.svg)
+![Workflow Status](https://github.com/ziebamikolaj/dynamically-generated-portfolio/actions/workflows/main-ci.yml/badge.svg)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Mikołaj Zięba's Dynamic GitHub Portfolio
 
-Currently, two official plugins are available:
+Welcome to the official repository for Mikołaj Zięba's dynamic GitHub portfolio. This project is designed to showcase my projects and skills by dynamically generating a portfolio website that scans my GitHub repositories and displays them as interactive cards based on each repo's metadata and README files. Built with React, TypeScript, and Vite, this portfolio highlights modern web development practices and tools.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Dynamic Repository Cards**: Automatically generates visual cards for each repository, pulling in details such as the repository name, description, language, and latest commit.
+- **Real-Time Updates**: Updates content in real-time as new repositories are added or existing repositories are updated on GitHub.
+- **Responsive Design**: Fully responsive web design that looks great on both desktop and mobile devices.
+- **Interactive UI**: Interactive elements that enhance user engagement, such as modals for detailed repository information and animations.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **Vite**: A modern frontend build tool that significantly improves the development experience.
+- **GitHub API**: To fetch real-time data from my GitHub repositories.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
+## Setup and Installation
+
+To get this portfolio running on your local machine, follow these steps:
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/ziebamikolaj/dynamically-generated-portfolio.git
+cd dynamically-generated-portfolio
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Run the development server**
+
+```bash
+npm run dev
+```
+
+This will start the local server at `http://localhost:5173/`.
+
+4. **Build for production**
+
+```bash
+npm run build
+```
+
+This command prepares the application for production by optimizing and bundling the files.
