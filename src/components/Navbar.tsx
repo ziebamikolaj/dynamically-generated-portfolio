@@ -1,5 +1,4 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -8,12 +7,12 @@ function Navbar() {
         Mikołaj Zięba
       </h2>
       <div className="flex w-24 place-content-around">
-        <Link to="https://github.com/ziebamikolaj">
+        <a href="https://github.com/ziebamikolaj">
           <FaGithub />
-        </Link>
-        <Link to="https://www.linkedin.com/in/mikolaj-zieba-/">
+        </a>
+        <a href="https://www.linkedin.com/in/mikolaj-zieba-/">
           <FaLinkedin />
-        </Link>
+        </a>
       </div>
     </div>
   );

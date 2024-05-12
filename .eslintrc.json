@@ -4,7 +4,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "@tanstack/query"],
+  "plugins": ["prettier", "@typescript-eslint", "@tanstack/query"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "@typescript-eslint/array-type": ["warn", { "default": "generic" }],
