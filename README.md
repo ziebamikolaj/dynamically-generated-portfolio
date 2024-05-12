@@ -14,6 +14,7 @@ Welcome to the official repository for Mikołaj Zięba's dynamic GitHub portfoli
 
 ## Technologies Used
 
+- **Next.js**: A popular React framework for building fast, static, and dynamic web applications.
 - **React**: A JavaScript library for building user interfaces.
 - **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
 - **Vite**: A modern frontend build tool that significantly improves the development experience.
