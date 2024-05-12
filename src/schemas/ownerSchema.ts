@@ -5,3 +5,4 @@ export const OwnerSchema = z.object({
   login: z.string(),
   url: z.string(),
 });
+export type Owner = z.infer<typeof OwnerSchema>;

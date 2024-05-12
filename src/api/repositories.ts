@@ -1,3 +1,4 @@
+import { GithubFileSchema } from "@/schemas/githubFileSchema";
 import { RepositoriesSchema } from "@/schemas/repositorySchema";
 
 export const getRepositories = async (username: string) => {
@@ -14,7 +15,7 @@ export const getRepositories = async (username: string) => {
     const repositories = RepositoriesSchema.parse(data);
     for (const repository of repositories) {
       const readme = await getReadmeFile(username, repository.name);
-      repository.readme = decodeBase64(readme.content);
+      repository.readme = decodeBase64(readme);
     }
     return repositories;
   } catch (error) {
@@ -31,11 +32,17 @@ const getReadmeFile = async (owner: string, repo: string) => {
       },
     },
   );
-  const data = (await response.json()) as { content: string };
-  return data;
-};``
+  const data = (await response.json()) as unknown;
+  try {
+    const readme = GithubFileSchema.parse(data);
+    return readme.content;
+  } catch {
+    throw new Error("Data validation failed");
+  }
+};
+``;
 
-const decodeBase64 = (data: string) => {
+const decodeBase64 = (data: string | undefined) => {
   if (data === undefined || data === null) return null;
   return data
     .split("\n")
