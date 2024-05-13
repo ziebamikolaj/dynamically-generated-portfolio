@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import type { VariantProps } from "class-variance-authority";
 import * as React from "react";
 import { cva } from "class-variance-authority";
