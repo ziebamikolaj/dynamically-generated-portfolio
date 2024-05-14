@@ -1,4 +1,9 @@
 import type { Repository } from "@/schemas/repositorySchema";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@radix-ui/react-hover-card";
 import { format } from "date-fns";
 import { CiCalendar } from "react-icons/ci";
 import { FiGithub } from "react-icons/fi";
@@ -31,23 +36,33 @@ export const RepoCard = ({ repository }: { repository: Repository }) => {
         </TypographyH3>
 
         <div className="flex">
-          <TypographyP className="h-24 w-full pr-6 text-card-foreground">
+          <TypographyP className="w-full pr-6 text-card-foreground xl:h-28 ">
             {repository.description}
           </TypographyP>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {repository.topics.map((topic) => (
+        <div className="flex flex-wrap gap-2 pt-2">
+          {repository.topics.sort().map((topic) => (
             <Badge variant="outline" key={topic}>
               {topic}
             </Badge>
           ))}
         </div>
-        <div className="flex items-end">
+        <div className="mt-4 flex">
           <LanguageIcon language={repository.language} />
-          <TypographyP className="flex w-full content-end items-center justify-end gap-2">
-            <CiCalendar />
-            Updated {format(repository.updated_at, "MMMM yyyy")}
-          </TypographyP>
+
+          <HoverCard>
+            <div className="flex w-full justify-end">
+              <HoverCardTrigger className="flex items-center gap-2">
+                <CiCalendar />
+                Updated {format(repository.pushed_at, "MMMM yyyy")}
+              </HoverCardTrigger>
+            </div>
+            <HoverCardContent className="w-44 rounded-xl text-center text-foreground ">
+              <TypographyP>
+                Pushed on {format(repository.pushed_at, "dd-MM-yyyy")}
+              </TypographyP>
+            </HoverCardContent>
+          </HoverCard>
         </div>
       </div>
     </div>

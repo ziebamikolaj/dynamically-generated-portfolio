@@ -10,7 +10,7 @@ export const RepositorySchema = z.object({
   topics: z.array(z.string()),
   owner: OwnerSchema,
   readme: z.string().nullable().optional(),
-  updated_at: z.string().datetime(),
+  pushed_at: z.string().datetime(),
   language: z.string().nullable(),
 });
 
