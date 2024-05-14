@@ -50,7 +50,11 @@ export const RepoCard = ({ repository }: { repository: Repository }) => {
         </div>
         <div className="flex flex-wrap gap-2 pt-2">
           {repository.topics.sort().map((topic) => (
-            <Badge variant="outline" key={topic}>
+            <Badge
+              variant="outline"
+              className="border-card-secondary  text-card-foreground"
+              key={topic}
+            >
               {topic}
             </Badge>
           ))}
