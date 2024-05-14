@@ -17,7 +17,15 @@ export const RepoCard = ({ repository }: { repository: Repository }) => {
   return (
     <div className="flex w-[20rem] flex-wrap justify-end rounded-xl bg-card md:w-[40rem] xl:w-[32rem] 2xl:w-[28rem]">
       <div className="grid h-60 w-full place-items-center rounded-t-xl bg-card-secondary">
-        <FiGithub className="h-24 w-full text-card-foreground" />
+        {repository.preview ? (
+          <img
+            src={repository.preview}
+            alt={repository.name}
+            className="h-60 w-full rounded-t-xl border border-card object-cover"
+          />
+        ) : (
+          <FiGithub className="h-24 w-full text-card-foreground" />
+        )}
       </div>
 
       <div className="w-full p-6">

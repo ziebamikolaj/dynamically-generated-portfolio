@@ -9,9 +9,10 @@ export const RepositorySchema = z.object({
   html_url: z.string(),
   topics: z.array(z.string()),
   owner: OwnerSchema,
-  readme: z.string().nullable().optional(),
   pushed_at: z.string().datetime(),
   language: z.string().nullable(),
+  readme: z.string().nullable().optional(),
+  preview: z.string().nullable().optional(),
 });
 
 export const RepositoriesSchema = z.array(RepositorySchema);
