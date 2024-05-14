@@ -43,7 +43,7 @@ npm install
 npm run dev
 ```
 
-This will start the local server at `http://localhost:5173/`.
+This will start the local server at `http://localhost:3000/`.
 
 4. **Build for production**
 
