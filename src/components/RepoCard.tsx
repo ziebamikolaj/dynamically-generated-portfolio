@@ -16,7 +16,7 @@ import { TypographyH3, TypographyP } from "./ui/typographies";
 
 export const RepoCard = ({ repository }: { repository: Repository }) => {
   return (
-    <div className="flex w-[20rem] flex-wrap justify-end rounded-xl bg-card md:w-[40rem] xl:w-[32rem] 2xl:w-[28rem]">
+    <div className="flex w-[20rem] flex-wrap justify-end rounded-xl bg-card hover:opacity-90 md:w-[40rem] xl:w-[32rem] 2xl:w-[28rem]">
       <div className="grid h-60 w-full place-items-center rounded-t-xl bg-card-secondary">
         <Link href={`/repo/${repository.name}`} className="w-full">
           {repository.preview ? (
@@ -30,7 +30,6 @@ export const RepoCard = ({ repository }: { repository: Repository }) => {
           )}
         </Link>
       </div>
-
       <div className="w-full p-6">
         <TypographyH3 className="w-full">
           <div className="flex justify-end">
@@ -45,7 +44,6 @@ export const RepoCard = ({ repository }: { repository: Repository }) => {
             </a>
           </div>
         </TypographyH3>
-
         <div className="flex">
           <TypographyP className="w-full pr-6 text-card-foreground xl:h-28 ">
             {repository.description}
@@ -55,7 +53,7 @@ export const RepoCard = ({ repository }: { repository: Repository }) => {
           {repository.topics.sort().map((topic) => (
             <Badge
               variant="outline"
-              className="border-card-secondary  text-card-foreground"
+              className="border-card-secondary text-card-foreground"
               key={topic}
             >
               {topic}
