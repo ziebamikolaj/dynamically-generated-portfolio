@@ -1,21 +1,21 @@
 import { GithubFileSchema } from "@/schemas/githubFileSchema";
 import { RepositoriesSchema } from "@/schemas/repositorySchema";
 
-export const getRepositories = async (username: string) => {
+export const getRepositories = async () => {
   const response = await fetch(
-    "https://api.github.com/users/" + username + "/repos",
+    `https://api.github.com/users/${process.env.GITHUB_USERNAME}/repos`,
     {
       headers: {
         Authorization: "Bearer " + process.env.GITHUB_TOKEN,
       },
     },
   );
-  const data = (await response.json()) as Array<unknown>;
+  const data = (await response.json()) as unknown;
   try {
     const repositories = RepositoriesSchema.parse(data);
     for (const repository of repositories) {
-      const readme = await getReadmeFile(username, repository.name);
-      const preview = await getPreviewFile(username, repository.name);
+      const readme = await getReadmeFile(repository.name);
+      const preview = await getPreviewFile(repository.name);
       repository.readme = decodeBase64(readme);
       repository.preview = preview;
     }
@@ -25,9 +25,9 @@ export const getRepositories = async (username: string) => {
   }
 };
 
-const getReadmeFile = async (owner: string, repo: string) => {
+const getReadmeFile = async (repo: string) => {
   const response = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/readme`,
+    `https://api.github.com/repos/${process.env.GITHUB_USERNAME}/${repo}/readme`,
     {
       headers: {
         Authorization: "Bearer " + process.env.GITHUB_TOKEN,
@@ -43,9 +43,9 @@ const getReadmeFile = async (owner: string, repo: string) => {
   }
 };
 
-const getPreviewFile = async (owner: string, repo: string) => {
+const getPreviewFile = async (repo: string) => {
   const response = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/contents/preview.png`,
+    `https://api.github.com/repos/${process.env.GITHUB_USERNAME}/${repo}/contents/preview.webp`,
     {
       headers: {
         Authorization: "Bearer " + process.env.GITHUB_TOKEN,
