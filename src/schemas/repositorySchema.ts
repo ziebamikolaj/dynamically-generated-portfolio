@@ -11,6 +11,12 @@ export const RepositorySchema = z.object({
   owner: OwnerSchema,
   pushed_at: z.string().datetime(),
   language: z.string().nullable(),
+  homepage: z.string().nullable(),
+  license: z
+    .object({
+      name: z.string(),
+    })
+    .nullable(),
   readme: z.string().nullable().optional(),
   preview: z.string().nullable().optional(),
 });

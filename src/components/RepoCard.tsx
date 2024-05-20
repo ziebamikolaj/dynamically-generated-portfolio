@@ -5,6 +5,7 @@ import {
   HoverCardTrigger,
 } from "@radix-ui/react-hover-card";
 import { format } from "date-fns";
+import Link from "next/link";
 import { CiCalendar } from "react-icons/ci";
 import { FiGithub } from "react-icons/fi";
 import { PiLinkLight } from "react-icons/pi";
@@ -17,15 +18,17 @@ export const RepoCard = ({ repository }: { repository: Repository }) => {
   return (
     <div className="flex w-[20rem] flex-wrap justify-end rounded-xl bg-card md:w-[40rem] xl:w-[32rem] 2xl:w-[28rem]">
       <div className="grid h-60 w-full place-items-center rounded-t-xl bg-card-secondary">
-        {repository.preview ? (
-          <img
-            src={repository.preview}
-            alt={repository.name}
-            className="h-60 w-full rounded-t-xl border border-card object-cover"
-          />
-        ) : (
-          <FiGithub className="h-24 w-full text-card-foreground" />
-        )}
+        <Link href={`/repo/${repository.name}`} className="w-full">
+          {repository.preview ? (
+            <img
+              src={repository.preview}
+              alt={repository.name}
+              className="h-60 w-full rounded-t-xl border border-card object-cover"
+            />
+          ) : (
+            <FiGithub className="h-24 w-full text-card-foreground" />
+          )}
+        </Link>
       </div>
 
       <div className="w-full p-6">
