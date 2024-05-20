@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 function Navbar() {
   return (
     <>
-      <div className="fixed z-50 grid h-20 w-screen place-items-center bg-card">
+      <div className="fixed z-50 grid h-[5.5rem] w-screen place-items-center bg-card py-2">
         <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
           Mikołaj Zięba
         </h2>
