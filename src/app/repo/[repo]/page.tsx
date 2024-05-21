@@ -72,12 +72,12 @@ export default async function Repo({ params }: RepoProps) {
       </div>
       <div className="mb-6 text-base md:mb-8 md:text-lg lg:mb-10 lg:text-xl">
         {repo.readme && (
-          <div className="m-auto w-1/2">
+          <div className="m-auto xl:w-1/2">
             <h3 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
               README
             </h3>
             <div
-              className="markdown  text-card-foreground md:text-base lg:text-lg"
+              className="markdown text-card-foreground md:text-base lg:text-lg"
               dangerouslySetInnerHTML={{
                 __html: (await parseMarkdown(repo.readme || "")) || "",
               }}
