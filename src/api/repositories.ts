@@ -1,3 +1,5 @@
+import { Base64 } from "js-base64";
+
 import { GithubFileSchema } from "@/schemas/githubFileSchema";
 import { RepositoriesSchema } from "@/schemas/repositorySchema";
 
@@ -16,7 +18,7 @@ export const getRepositories = async () => {
     for (const repository of repositories) {
       const readme = await getReadmeFile(repository.name);
       const preview = await getPreviewFile(repository.name);
-      repository.readme = decodeBase64(readme);
+      repository.readme = readme;
       repository.preview = preview;
     }
     return repositories;
@@ -37,7 +39,8 @@ const getReadmeFile = async (repo: string) => {
   const data = (await response.json()) as unknown;
   try {
     const readme = GithubFileSchema.parse(data);
-    return readme.content;
+    if (!readme.content) return "";
+    return Base64.decode(readme.content);
   } catch {
     throw new Error("Data validation failed");
   }
@@ -60,12 +63,4 @@ const getPreviewFile = async (repo: string) => {
   } catch {
     throw new Error("Data validation failed");
   }
-};
-
-const decodeBase64 = (data: string | undefined) => {
-  if (data === undefined || data === null) return null;
-  return data
-    .split("\n")
-    .map((line) => atob(line))
-    .join("\n");
 };

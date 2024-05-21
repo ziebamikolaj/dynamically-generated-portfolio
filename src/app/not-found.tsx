@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="grid min-h-[calc(100vh-5.5rem)] w-full place-items-center">
+    <div className="grid min-h-[calc(100vh-6.5rem)] w-full place-items-center">
       <div className="flex flex-col items-center justify-center gap-6 rounded-lg p-8 shadow-2xl">
         <h1 className="text-2xl font-bold">404</h1>
         <p className="text-lg">This page could not be found.</p>

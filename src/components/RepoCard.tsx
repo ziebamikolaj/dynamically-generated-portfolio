@@ -14,22 +14,25 @@ import { LanguageIcon } from "./LanguageIcon";
 import { Badge } from "./ui/badge";
 import { TypographyH3, TypographyP } from "./ui/typographies";
 
+const MAX_DESCRIPTION_LENGTH = 15;
+
 export const RepoCard = ({ repository }: { repository: Repository }) => {
   return (
     <div className="flex w-[20rem] flex-wrap justify-end rounded-xl bg-card hover:opacity-90 md:w-[40rem] xl:w-[32rem] 2xl:w-[28rem]">
-      <div className="grid h-60 w-full place-items-center rounded-t-xl bg-card-secondary">
-        <Link href={`/repo/${repository.name}`} className="w-full">
-          {repository.preview ? (
-            <img
-              src={repository.preview}
-              alt={repository.name}
-              className="h-60 w-full rounded-t-xl border border-card object-cover"
-            />
-          ) : (
-            <FiGithub className="h-24 w-full text-card-foreground" />
-          )}
-        </Link>
-      </div>
+      <Link
+        href={`/repo/${repository.name}`}
+        className="grid h-60 w-full place-items-center rounded-t-xl bg-card-secondary"
+      >
+        {repository.preview ? (
+          <img
+            src={repository.preview}
+            alt={repository.name}
+            className="h-60 w-full rounded-t-xl border border-card object-cover"
+          />
+        ) : (
+          <FiGithub className="h-24 w-full text-card-foreground" />
+        )}
+      </Link>
       <div className="w-full p-6">
         <TypographyH3 className="w-full">
           <div className="flex justify-end">
@@ -45,8 +48,20 @@ export const RepoCard = ({ repository }: { repository: Repository }) => {
           </div>
         </TypographyH3>
         <div className="flex">
-          <TypographyP className="w-full pr-6 text-card-foreground xl:h-28 ">
-            {repository.description}
+          <TypographyP className="w-full pr-6 text-card-foreground xl:h-20">
+            {repository.description &&
+            repository.description.split(" ").length >
+              MAX_DESCRIPTION_LENGTH ? (
+              <span>
+                {repository.description
+                  .split(" ")
+                  .slice(0, MAX_DESCRIPTION_LENGTH)
+                  .join(" ")}
+                <Link href={`/repo/${repository.name}`}> ...</Link>
+              </span>
+            ) : (
+              <span>{repository.description}</span>
+            )}
           </TypographyP>
         </div>
         <div className="flex flex-wrap gap-2 pt-2">
