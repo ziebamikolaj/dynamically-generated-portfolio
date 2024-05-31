@@ -28,22 +28,16 @@ export default async function Repo({ params }: RepoProps) {
   return (
     <section className="h-[calc(100vh-6.5rem)] p-10">
       <div className="flex justify-between">
-        <div className="mb-6 flex items-center md:mb-8 lg:mb-10">
+        <div className="m-auto mb-6 flex flex-wrap items-center md:mb-8 lg:mb-10 xl:w-1/2">
           {repo.preview && (
             <img
               alt={repo.name}
-              className="mr-4 h-20 w-40 rounded-lg md:h-24 md:w-48 lg:h-28 lg:w-56"
-              height={100}
+              className="h-auto w-full rounded-t-2xl"
               src={repo.preview}
-              style={{
-                aspectRatio: "200/100",
-                objectFit: "cover",
-              }}
-              width={200}
             />
           )}
           <div className="flex w-full flex-col justify-center">
-            <h2 className="text-2xl font-bold md:text-3xl lg:text-4xl">
+            <h2 className="mt-4 text-2xl font-bold md:text-3xl lg:text-4xl">
               {repo.name}
             </h2>
             <div className="flex w-full flex-wrap gap-2 pt-2">
@@ -64,15 +58,15 @@ export default async function Repo({ params }: RepoProps) {
           <RiArrowGoBackFill className="h-8 w-8" />
         </Link>
       </div>
-      <div className="mb-6 text-base md:mb-8 md:text-lg lg:mb-10 lg:text-xl">
+      <div className="m-auto mb-6 text-base md:mb-8 md:text-lg lg:mb-10 lg:text-xl xl:w-1/2">
         <h3 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
           About
         </h3>
         <p>{repo.description}</p>
       </div>
-      <div className="mb-6 text-base md:mb-8 md:text-lg lg:mb-10 lg:text-xl">
+      <div className="m-auto mb-6 text-base md:mb-8 md:text-lg lg:mb-10 lg:text-xl xl:w-1/2">
         {repo.readme && (
-          <div className="m-auto xl:w-1/2">
+          <div>
             <h3 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
               README
             </h3>
@@ -85,7 +79,7 @@ export default async function Repo({ params }: RepoProps) {
           </div>
         )}
       </div>
-      <div className="flex items-center justify-between">
+      <div className="m-auto flex items-center justify-between xl:w-1/2">
         <div className="mb-6 mt-4 space-x-5">
           <RoundedButton href={repo.html_url}>View on GitHub</RoundedButton>
           {repo.homepage && (
