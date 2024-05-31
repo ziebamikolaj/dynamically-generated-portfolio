@@ -80,8 +80,10 @@ export default async function Repo({ params }: RepoProps) {
         )}
       </div>
       <div className="m-auto flex items-center justify-between xl:w-1/2">
-        <div className="mb-6 mt-4 space-x-5">
-          <RoundedButton href={repo.html_url}>View on GitHub</RoundedButton>
+        <div className="mb-6 mt-4 space-x-5 space-y-3 ">
+          <RoundedButton href={repo.html_url} className="ml-5">
+            View on GitHub
+          </RoundedButton>
           {repo.homepage && (
             <RoundedButton href={repo.homepage}>Live Demo</RoundedButton>
           )}
@@ -90,7 +92,7 @@ export default async function Repo({ params }: RepoProps) {
           <div className="flex flex-wrap justify-end">
             <span className="w-full text-right">{repo.language}</span>
             {repo.license && <span>{repo.license.name}</span>}
-            <span className="w-full text-right">
+            <span className="w-full whitespace-nowrap text-right">
               Updated {format(new Date(repo.pushed_at), "MMMM dd")}
             </span>
           </div>
