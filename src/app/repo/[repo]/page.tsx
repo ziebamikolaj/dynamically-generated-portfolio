@@ -37,7 +37,7 @@ export default async function Repo({ params }: RepoProps) {
           {repo.preview && (
             <img
               alt={repo.name}
-              className="h-auto w-full rounded-t-2xl"
+              className="max-h-80 w-full rounded-t-2xl object-cover"
               src={repo.preview}
             />
           )}
