@@ -27,6 +27,11 @@ export default async function Repo({ params }: RepoProps) {
 
   return (
     <section className="h-[calc(100vh-6.5rem)] p-10">
+      <div className="mb-1 flex w-full justify-end">
+        <Link href="/" className="h-8 w-8 hover:text-[#94A3B8]">
+          <RiArrowGoBackFill className="h-8 w-8" />
+        </Link>
+      </div>
       <div className="flex justify-between">
         <div className="m-auto mb-6 flex flex-wrap items-center md:mb-8 lg:mb-10 xl:w-1/2">
           {repo.preview && (
@@ -53,10 +58,6 @@ export default async function Repo({ params }: RepoProps) {
             </div>
           </div>
         </div>
-
-        <Link href="/" className="hover:text-[#94A3B8]">
-          <RiArrowGoBackFill className="h-8 w-8" />
-        </Link>
       </div>
       <div className="m-auto mb-6 text-base md:mb-8 md:text-lg lg:mb-10 lg:text-xl xl:w-1/2">
         <h3 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
