@@ -16,6 +16,8 @@ export const getRepositories = async () => {
   try {
     const repositories = RepositoriesSchema.parse(data);
     for (const repository of repositories) {
+      if (repository.name === repository.owner.login)
+        repositories.splice(repositories.indexOf(repository), 1);
       const readme = await getReadmeFile(repository.name);
       const preview = await getPreviewFile(repository.name);
       repository.readme = readme;
